@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para cuando tu cabezota no pueda más</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f0f0f;
+    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.screen {
+    max-width: 600px;
+    padding: 30px 20px;
+    line-height: 1.7;
+    font-size: 18px;
+    display: none;
+}
+
+button {
+    background-color: transparent;
+    border: 1px solid #f5f5f5;
+    color: #f5f5f5;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #f5f5f5;
+    color: #0f0f0f;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Pantalla 1 -->
+<div class="screen" id="screen1" style="display:block;">
+    <p>Esto no es un poema…</p>
+    <button onclick="mostrarScreen2()">Abrir</button>
+</div>
+
+<!-- Pantalla 2 (imagen + chiste) -->
+<div class="screen" id="screen2">
+    <!-- Cambia el nombre de la imagen aquí -->
+    <img src="jeje.png" alt="chiste interno">
+    <p>Ahora presioná aquí</p>
+    <button onclick="mostrarScreen3()">Continuar</button>
+</div>
+
+<!-- Pantalla 3 (mensaje completo) -->
+<div class="screen" id="screen3">
+
+<p>
+Espero te guste este regalo.<br><br>
+
+Es para cuando tu cabezota ya no pueda más, para que al verlo dejés a un lado esos pensamientos y recordés los buenos momentos que has tenido… y, obviamente, yo soy uno de ellos.<br><br>
+
+Esto no es una carta de amor (¿o sí?). No lo sé, pero tampoco te emociones. Solo estoy mostrando una parte de mí que casi nadie ve.<br><br>
+
+Sé que por tu mente pasan mil cosas; a mí me pasa algo parecido. Mi vida es complicada, pero me gusta que sea así porque la hace más emocionante (probablemente esté mal de la cabeza).<br><br>
+
+Sin embargo, disfruto mucho nuestro tiempo juntos porque me ayuda a desconectar. Tampoco te sintás tan importante; tengo otras formas de hacerlo… solo que, por ahora, esta es mi favorita, porque vos sos parte de ella.<br><br>
+
+Quiero conocerte y entenderte mejor, saber qué pasa en tu cabezota, pero sin prisas ni presiones; todo tiene su tiempo, pues soy alguien a quien no le gusta forzar las cosas.<br><br>
+
+Ojalá valorés esto… y si no, pues ni modo.
+</p>
+
+<div class="footer">
+Y por si no te habías dado cuenta, Staceyyyyyyyyy…<br><br>
+Te quiero.
+</div>
+
+</div>
+
+<script>
+function mostrarScreen2() {
+    document.getElementById("screen1").style.display = "none";
+    document.getElementById("screen2").style.display = "block";
+}
+
+function mostrarScreen3() {
+    document.getElementById("screen2").style.display = "none";
+    document.getElementById("screen3").style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
 
