@@ -24,7 +24,16 @@ body {
     padding: 30px 20px;
     line-height: 1.7;
     font-size: 18px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
     display: none;
+}
+
+.screen.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 button {
@@ -36,6 +45,7 @@ button {
     cursor: pointer;
     border-radius: 6px;
     margin-top: 20px;
+    margin-right: 10px;
 }
 
 button:hover {
@@ -53,6 +63,11 @@ img {
     margin-top: 40px;
     font-size: 20px;
     font-weight: bold;
+    line-height: 1.6;
+}
+
+.btn-container {
+    margin-top: 25px;
 }
 </style>
 </head>
@@ -60,63 +75,94 @@ img {
 <body>
 
 <!-- Pantalla 1 -->
-<div class="screen" id="screen1" style="display:block;">
+<div class="screen active" id="screen1">
     <p>Esto no es un poema…</p>
-    <button onclick="mostrarScreen2()">Abrir</button>
+    <button onclick="cambiarPantalla('screen1', 'screen2')">Abrir</button>
 </div>
 
-<!-- Pantalla 2 (imagen + chiste) -->
+<!-- Pantalla 2 -->
 <div class="screen" id="screen2">
-    <!-- Cambia el nombre de la imagen aquí -->
     <img src="jeje.png" alt="chiste interno">
-    <p>ME CAES MAL</p>
-    <button onclick="mostrarScreen3()">Continuar</button>
+    <p>ME CAÉS MAL</p>
+    <button onclick="cambiarPantalla('screen2', 'screen3')">Continuar</button>
 </div>
 
-<!-- Pantalla 3 (mensaje completo) -->
+<!-- Pantalla 3 -->
 <div class="screen" id="screen3">
 
 <p>
-Espero te guste este regalo.<br><br>
+Espero que te guste este regalo.<br><br>
 
-Es para cuando tu cabezota ya no pueda más, para que al verlo dejés a un lado esos pensamientos y recordés los buenos momentos que has tenido… y, obviamente, yo soy uno de ellos.<br><br>
+Es para cuando tu cabezota ya no pueda más. Para que, al verlo, dejés a un lado esos pensamientos y recordés los buenos momentos que has tenido… y, obviamente, yo soy uno de ellos.<br><br>
 
-Esto no es una carta de amor (¿o sí?). No lo sé, pero tampoco te emociones. Solo te estoy mostrando una parte de mí que casi nadie ve.<br><br>
+Esto no es una carta de amor (¿o sí?). No lo sé… pero tampoco te emocionés. Solo te estoy mostrando una parte de mí que casi nadie ve.<br><br>
 
-Sé que por tu mente pasan mil cosas; a mí me pasa algo parecido. Mi vida es complicada, pero me gusta que sea así porque la hace más emocionante (probablemente esté mal de la cabeza).<br><br>
+Sé que por tu mente pasan mil cosas. A mí me pasa algo parecido. Mi vida es complicada, pero me gusta que sea así porque la hace más emocionante (probablemente esté mal de la cabeza).<br><br>
 
-Sin embargo, disfruto mucho nuestro tiempo juntos porque me ayuda a desconectar. Pero no te sintás tan importante; tengo otras formas de hacerlo… solo que, por ahora, esta es mi favorita, porque sos parte de ella.<br><br>
+Sin embargo, disfruto mucho nuestro tiempo juntos porque me ayuda a desconectar. Pero no te sintás tan importante; tengo otras formas de hacerlo… solo que, por ahora, esta es mi favorita. Y sí, es porque vos sos parte de ella.<br><br>
 
-Quiero conocerte y entenderte mejor, saber qué pasa en tu cabezota, pero sin prisas ni presiones; todo tiene su tiempo, pues soy alguien a quien no le gusta forzar las cosas.<br><br>
+Quiero conocerte y entenderte mejor. Saber qué pasa en tu cabezota, pero sin prisas ni presiones; todo tiene su tiempo. Yo soy alguien a quien no le gusta forzar las cosas, porque cuando algo se fuerza, deja de sentirse real.<br><br>
 
 Ojalá valorés esto… y si no, pues me vale :P.
 </p>
 
 <div class="footer">
 Y por si no te habías dado cuenta, Stacey…<br><br>
-Te quiero y me importas demasiado, aún no se si eso sea bueno o malo.
-<div class="footer">   
-De lo que si estoy seguro es que estoy obsesionado y eso me encanta.<br><br>  
+
+Te quiero, y me importás más de lo que debería admitir.<br><br>
+
+No sé si eso sea bueno o malo… pero sí sé que no es algo que me nazca con cualquiera.<br><br>
+
+A veces me pregunto si estoy exagerando, si debería bajarle, si debería ser más “normal”… pero después me acuerdo de cómo me siento cuando estás cerca, y se me pasa.<br><br>
+
+Porque cuando alguien te importa de verdad, no se siente como una carga. Se siente como algo que querés cuidar, aunque no sepás exactamente cómo.<br><br>
+
+Y sí… estoy obsesionado. Pero no de una forma tóxica o rara…<br>
+Obsesionado con tu forma de ser, con tu energía, con lo que provocás en mí.<br><br>
+
+Y lo peor (o lo mejor) es que eso… me encanta.
+</div>
+
+<div class="btn-container">
+    <button onclick="cambiarPantalla('screen3', 'screen4')">Siguiente</button>
+</div>
+
+</div>
+
+<!-- Pantalla 4 -->
+<div class="screen" id="screen4">
+
+<p>
+<!-- AQUÍ PODÉS ESCRIBIR TU NUEVO TEXTO -->
+Aquí va la continuación...<br><br>
+
+(Podés poner lo que querrás: algo más serio, algo más romántico, una despedida, otro chiste, lo que sea.)
+</p>
+
+<div class="btn-container">
+    <button onclick="cambiarPantalla('screen4', 'screen3')">Volver</button>
+    <button onclick="cambiarPantalla('screen4', 'screen1')">Finalizar</button>
 </div>
 
 </div>
 
 <script>
-function mostrarScreen2() {
-    document.getElementById("screen1").style.display = "none";
-    document.getElementById("screen2").style.display = "block";
-}
+function cambiarPantalla(actual, siguiente) {
+    const actualDiv = document.getElementById(actual);
+    const siguienteDiv = document.getElementById(siguiente);
 
-function mostrarScreen3() {
-    document.getElementById("screen2").style.display = "none";
-    document.getElementById("screen3").style.display = "block";
+    actualDiv.classList.remove("active");
+
+    setTimeout(() => {
+        actualDiv.style.display = "none";
+        siguienteDiv.style.display = "block";
+
+        setTimeout(() => {
+            siguienteDiv.classList.add("active");
+        }, 50);
+    }, 400);
 }
 </script>
 
 </body>
 </html>
-
-
-
-
-
